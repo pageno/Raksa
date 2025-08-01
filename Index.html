@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📖 스마트스토어 입문 전자책</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body, html {height:100%; width:100%; font-family:'Arial', sans-serif; overflow:hidden;}
+
+    .app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      background: #f5f5f5;
+      position: relative;
+    }
+
+    header {
+      text-align:center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      padding: 20px 10px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    .slider-container {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slides {
+      display: flex;
+      height: 100%;
+      width: 500%;
+      transition: transform 0.4s ease;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      height: 100%;
+      padding: 80px 20px 80px 20px;
+      overflow-y: auto;
+      background: #fff;
+    }
+
+    .slide h2 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .slide p, .slide li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      line-height: 1.4rem;
+    }
+
+    /* 페이지 네비게이션 */
+    .pagination {
+      position: fixed;
+      bottom: 65px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 28px;
+      height: 28px;
+      background: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #fff;
+      font-weight: bold;
+    }
+    .dot.active { background: #333; }
+
+    /* 현재 페이지를 동그라미와 같은 높이, 오른쪽 끝으로 */
+    .page-indicator {
+      position: fixed;
+      bottom: 65px;
+      right: 20px;
+      font-size: 0.9rem;
+      color: #333;
+      font-weight: bold;
+      z-index: 10;
+    }
+
+    .nav {
+      height: 50px;
+      background: #222;
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .nav button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>📖 스마트스토어 입문 전자책</header>
+
+    <div class="slider-container" id="sliderContainer">
+      <div class="slides" id="slides">
+        <div class="slide">
+          <h2>1장. 스마트스토어란?</h2>
+          <ul>
+            <li>네이버에서 제공하는 온라인 쇼핑몰 플랫폼</li>
+            <li>개인도, 사업자도 쉽게 입점 가능</li>
+          </ul>
+          <p><strong>장점</strong></p>
+          <ol>
+            <li>네이버 검색 유입 자동 확보</li>
+            <li>스마트스토어 센터에서 상품·주문·배송 관리 가능</li>
+            <li>초기 비용 거의 없음</li>
+          </ol>
+          <p><strong>판매 방식</strong></p>
+          <ul>
+            <li>재고 보유형: 직접 사입 후 판매</li>
+            <li>무재고 위탁판매형: 재고 없이 판매 후 사입</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <h2>2장. 스마트스토어 시작 전 준비</h2>
+          <ol>
+            <li>사업자 등록 – 이미 있으면 통신판매업 신고만 추가</li>
+            <li>통신판매업 신고 – 정부24 온라인 가능</li>
+            <li>스마트스토어 계정 개설 – 네이버ID → 스마트스토어센터 접속 → 입점 신청</li>
+            <li>도매 사이트 회원가입 – 예: 사입삼촌, 도매매, 사방넷 등</li>
+          </ol>
+        </div>
+
+        <div class="slide">
+          <h2>3장. 상품 소싱 기초</h2>
+          <p><strong>상품 2가지 유형</strong></p>
+          <ol>
+            <li>시즌별 상품: 계절·행사에 따라 수요 급등</li>
+            <li>고정 상품: 계절 상관없이 꾸준히 판매</li>
+          </ol>
+          <p><strong>상품 고르는 기준</strong></p>
+          <ul>
+            <li>최근 인기 키워드</li>
+            <li>검색량 대비 경쟁률</li>
+            <li>리뷰·판매량 참고</li>
+            <li>마진 계산 가능 여부</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <h2>4장. 3일 입문 실천 플랜</h2>
+          <p><strong>1일차 – 계정 준비</strong></p>
+          <ul>
+            <li>스마트스토어 계정 만들기</li>
+            <li>통신판매업 신고 완료</li>
+            <li>도매 사이트 가입</li>
+          </ul>
+          <p><strong>2일차 – 상품 탐색</strong></p>
+          <ul>
+            <li>시즌별 3개, 고정 2개 후보 선정</li>
+            <li>상세페이지 자료 저장</li>
+          </ul>
+          <p><strong>3일차 – 상품 업로드</strong></p>
+          <ul>
+            <li>3·2·1 업로드 (시즌3, 고정2, 실험1)</li>
+            <li>무반응 상품은 3~7일 후 삭제 후 재업로드</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <h2>5장. 운영·관리 기초</h2>
+          <ol>
+            <li>상품 반응 체크 (방문자수, 찜, 클릭)</li>
+            <li>무반응 상품 삭제 후 재업로드</li>
+            <li>블로그·인스타·키워드 광고 최소 병행</li>
+            <li>주 1회 통계 확인, 반응 상품 유지</li>
+          </ol>
+          <p><strong>💡 이 내용만으로 가능한 것</strong></p>
+          <ul>
+            <li>계정 개설 → 첫 업로드까지 가능</li>
+            <li>하루 5~6개 상품 테스트 가능 (3·2·1 방식)</li>
+            <li>첫 판매 경험 확보, 최소 리스크</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+      <div class="page-indicator" id="pageIndicator">1 / 5</div>
+    </div>
+
+    <div class="nav">
+      <button onclick="alert('준비중입니다')">🏠 홈</button>
+      <button onclick="window.open('https://open.kakao.com/o/gEPueeHh','_blank')">💬 커뮤니티</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.getElementById('slides');
+    const pagination = document.getElementById('pagination');
+    const pageIndicator = document.getElementById('pageIndicator');
+    const sliderContainer = document.getElementById('sliderContainer');
+    const totalSlides = slides.children.length;
+    let currentIndex = 0;
+    let startX = 0;
+
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.textContent = i+1;
+      dot.addEventListener('click', () => goToSlide(i));
+      pagination.appendChild(dot);
+    }
+
+    const dots = document.querySelectorAll('.dot');
+
+    function updateIndicator() {
+      pageIndicator.textContent = `${currentIndex+1} / ${totalSlides}`;
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      slides.style.transform = `translateX(-${100 * index}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+      updateIndicator();
+    }
+
+    // 터치 슬라이드
+    slides.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    slides.addEventListener('touchend', e => {
+      let endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50 && currentIndex < totalSlides - 1) goToSlide(currentIndex + 1);
+      if (endX - startX > 50 && currentIndex > 0) goToSlide(currentIndex - 1);
+    });
+
+    // 클릭으로 좌우 이동
+    sliderContainer.addEventListener('click', e => {
+      const half = sliderContainer.clientWidth / 2;
+      if (e.clientX > half && currentIndex < totalSlides - 1) {
+        goToSlide(currentIndex + 1);
+      } else if (e.clientX <= half && currentIndex > 0) {
+        goToSlide(currentIndex - 1);
+      }
+    });
+  </script>
+</body>
+</html>
