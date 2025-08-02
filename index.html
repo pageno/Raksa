@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>📖 스마트스토어 입문 전자책</title>
+  <title>스마트스토어 입문 전자책</title>
   <style>
     * {margin:0; padding:0; box-sizing:border-box;}
     body, html {height:100%; width:100%; font-family:'Arial', sans-serif; overflow:hidden; background:#f5f5f5;}
@@ -26,6 +26,12 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       flex-shrink: 0;
       z-index: 10;
+    }
+
+    header img {
+      height: 40px;
+      vertical-align: middle;
+      margin-right: 8px;
     }
 
     .book-container {
@@ -71,10 +77,9 @@
       line-height: 1.4rem;
     }
 
-    /* 페이지네이션과 페이지 표시를 화면 아래쪽 끝으로 이동 */
     .pagination {
       position: fixed;
-      bottom: 50px; /* 네비게이션 위로 올림 */
+      bottom: 50px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -100,7 +105,7 @@
 
     .page-indicator {
       position: fixed;
-      bottom: 80px; /* 동그라미보다 위 */
+      bottom: 80px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 0.9rem;
@@ -132,7 +137,10 @@
 </head>
 <body>
   <div class="app">
-    <header>📖 스마트스토어 입문 전자책</header>
+    <header>
+      <img src="https://raw.githubusercontent.com/pageno/Raksa/main/rakskabooks.png" alt="스마트스토어 책">
+      스마트스토어 입문 전자책
+    </header>
 
     <div class="book-container">
       <div class="book" id="book">
