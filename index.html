@@ -64,17 +64,40 @@
       backface-visibility: hidden;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       transition: transform 0.8s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .page.cover {
+      justify-content: center;
+      text-align: center;
+    }
+    .page.cover img {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+    .page.cover h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .page.cover p {
+      font-size: 1.2rem;
+      color: #555;
     }
 
     .page h2 {
       margin-bottom: 10px;
       font-size: 1.3rem;
+      align-self: flex-start;
     }
 
     .page p, .page li {
       margin-bottom: 8px;
       font-size: 0.95rem;
       line-height: 1.4rem;
+      align-self: flex-start;
     }
 
     .pagination {
@@ -144,6 +167,13 @@
 
     <div class="book-container">
       <div class="book" id="book">
+        <!-- 표지 페이지 -->
+        <div class="page cover">
+          <img src="https://raw.githubusercontent.com/pageno/Raksa/main/rakskabooks.png" alt="표지">
+          <h1>스마트스토어 입문 전자책</h1>
+          <p>3일만에 첫 업로드까지 완성!</p>
+        </div>
+
         <div class="page"><h2>1장. 스마트스토어란?</h2>
           <ul>
             <li>네이버에서 제공하는 온라인 쇼핑몰 플랫폼</li>
@@ -217,7 +247,7 @@
         </div>
       </div>
       <div class="pagination" id="pagination"></div>
-      <div class="page-indicator" id="pageIndicator">1 / 5</div>
+      <div class="page-indicator" id="pageIndicator">1 / 6</div>
     </div>
 
     <div class="nav">
